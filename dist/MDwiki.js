@@ -1363,6 +1363,11 @@ if (typeof exports === 'object') {
 
         $.md.stage('init').subscribe(function(done) {
 
+            // Prevent remote loading of MD files and raw data passing
+            if ($.md.mainHref.includes("//") || $.md.mainHref.includes("data:")) {
+              done();
+            }
+
             var ajaxReq = {
                 url: $.md.mainHref,
                 dataType: 'text'
@@ -1370,7 +1375,7 @@ if (typeof exports === 'object') {
 
             // Request the md page
             $.ajax(ajaxReq).done(function(data) {
-                md = data.replace("<","").replace(">","");
+                md = data;
                 done();
             })
 

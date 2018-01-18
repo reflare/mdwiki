@@ -85,6 +85,11 @@
 
         $.md.stage('init').subscribe(function(done) {
 
+            // Prevent remote loading of MD files and raw data passing
+            if ($.md.mainHref.includes("//") || $.md.mainHref.includes("data:")) {
+              done();
+            }
+
             var ajaxReq = {
                 url: $.md.mainHref,
                 dataType: 'text'
