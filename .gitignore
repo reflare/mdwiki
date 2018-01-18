@@ -2,6 +2,10 @@ node_modules
 bower_components/
 node_modules/
 dist/
+.tscache
+tmp
+ts_compiled
+typings
 release/
 .tmp
 app/components

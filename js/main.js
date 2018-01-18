@@ -92,7 +92,7 @@
 
             // Request the md page
             $.ajax(ajaxReq).done(function(data) {
-                md = data;
+                md = data.replace("<","").replace(">","");
                 done();
             })
 
